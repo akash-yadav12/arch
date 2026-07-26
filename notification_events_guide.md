@@ -50,7 +50,7 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 👥 Recipient Resolution
 
-- **Learner (`To`)**: The employee whose were enrolled to the target course.
+- \*\*Enroller: "The one who enrolled this user(s) shoudl receive the email.
 - **Static TO & CC**: Any extra addresses in `staticTo` or `staticCc` (e.g. Training Admin).
 
 #### 🏷️ Available Placeholder Tokens
@@ -74,16 +74,15 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 👥 Recipient Resolution
 
-- **Learner (`To`)**: The employee who was unenrolled.
+- \*\*Enroller: "The one who enrolled this user(s) shoudl receive the email.
 - **Static TO & CC**: Additional static addresses configured on the template.
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                  | Description                       | Example                       | Required?   |
-| ---------------------- | --------------------------------- | ----------------------------- | ----------- |
-| `{{USER_NAME}}`        | Full name of the employee         | `Ahmed Al-Rashidi`            | ✅ Required |
-| `{{COURSE_NAME}}`      | Name of the course                | `H2S Safety Awareness`        | ✅ Required |
-| `{{REJECTION_REASON}}` | Explanation provided by the admin | `Prerequisites not completed` | Optional    |
+| Token             | Description               | Example                | Required?   |
+| ----------------- | ------------------------- | ---------------------- | ----------- |
+| `{{USER_NAME}}`   | Full name of the employee | `Ahmed Al-Rashidi`     | ✅ Required |
+| `{{COURSE_NAME}}` | Name of the course        | `H2S Safety Awareness` | ✅ Required |
 
 ---
 
@@ -100,17 +99,16 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 - **Static TO & CC**: Primary destination for notifying the **HSE Admin / Training Department** (`staticTo`).
 - **Nominator**: The user who submitted the nomination (e.g., Rig Superintendent / hse advisor, etc).
 - **Nominees**: The employees included in the nomination batch.
-- **Rig Staff**: email address assigned to the target rig(s) (on rig management page email id entered under the rig).
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                  | Description                             | Example                                  | Required?   |
-| ---------------------- | --------------------------------------- | ---------------------------------------- | ----------- |
-| `{{NOMINATOR_NAME}}`   | Name of person who submitted nomination | `Sara Al-Jaber`                          | ✅ Required |
-| `{{COURSE_NAME}}`      | Nominated course name                   | `Fire Fighting Basic`                    | ✅ Required |
-| `{{NOMINEE_COUNT}}`    | Number of employees nominated           | `5`                                      | ✅ Required |
-| `{{NOMINATION_NOTES}}` | Notes entered during submission         | `Urgent — rig rotation next month`       | Optional    |
-| `{{REVIEW_URL}}`       | Direct link to review the nomination    | `https://lms.kdckwt.com/nominations/123` | Optional    |
+| Token                     | Description                               | Example                                  | Required?   |
+| ------------------------- | ----------------------------------------- | ---------------------------------------- | ----------- |
+| `{{NOMINATOR_NAME}}`      | Name of person who submitted nomination   | `Sara Al-Jaber`                          | ✅ Required |
+| `{{COURSE_NAME}}`         | Nominated course name                     | `Fire Fighting Basic`                    | ✅ Required |
+| `{{NOMINEES_Names}}`      | Names & KDC number of employees nominated | `5`                                      | ✅ Required |
+| `{{INSTANCE_START_DATE}}` | Direct link to review the nomination      | `https://lms.kdckwt.com/nominations/123` | Optional    |
+| `{{INSTANCE_END_DATE}}`   | Direct link to review the nomination      | `https://lms.kdckwt.com/nominations/123` | Optional    |
 
 ---
 
@@ -125,13 +123,15 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 - **The Nominator**: Receives confirmation that their nominated employees were approved.
 - **Approved Nominees**: Enrolled learners whose nominations were accepted.
 - **Static TO & CC**: Additional static recipients.
+- **Rig Staff**: email address assigned to the target rig(s) (on rig management page email id entered under the rig).
 
 #### 🏷️ Available Placeholder Tokens
 
 | Token                     | Description                    | Example               | Required?   |
-| ------------------------- | ------------------------------ | --------------------- | ----------- |
-| `{{RECIPIENT_NAME}}`      | Name of email recipient        | `Ahmed Al-Rashidi`    | ✅ Required |
+| ------------------------- | ------------------------------ | --------------------- | ----------- | ----------- |
+| `{{NOMINATOR_NAME}}`      | Name of email recipient        | `Ahmed Al-Rashidi`    | ✅ Required |
 | `{{COURSE_NAME}}`         | Course name                    | `Fire Fighting Basic` | ✅ Required |
+| `{{NOMINEE_NAME}}`        | Nominator name & kdc number    | `Adel                 | 3359`       | ✅ Required |
 | `{{APPROVED_BY}}`         | Name of approving admin        | `HSE Manager`         | Optional    |
 | `{{INSTANCE_START_DATE}}` | Start date of enrolled session | `15 July 2026`        | Optional    |
 | `{{INSTANCE_END_DATE}}`   | End date of enrolled session   | `17 July 2026`        | Optional    |
@@ -153,12 +153,15 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                  | Description               | Example               | Required?   |
-| ---------------------- | ------------------------- | --------------------- | ----------- |
-| `{{RECIPIENT_NAME}}`   | Name of email recipient   | `Ahmed Al-Rashidi`    | ✅ Required |
-| `{{COURSE_NAME}}`      | Course name               | `Fire Fighting Basic` | ✅ Required |
-| `{{REJECTION_REASON}}` | Explanation for rejection | `Session is full`     | Optional    |
-| `{{REJECTED_BY}}`      | Name of rejecting admin   | `HSE Manager`         | Optional    |
+| Token                     | Description                    | Example               | Required?   |
+| ------------------------- | ------------------------------ | --------------------- | ----------- | ----------- |
+| `{{NOMINATOR_NAME}}`      | Name of email recipient        | `Ahmed Al-Rashidi`    | ✅ Required |
+| `{{COURSE_NAME}}`         | Course name                    | `Fire Fighting Basic` | ✅ Required |
+| `{{NOMINEE_NAME}}`        | Nominator name & kdc number    | `Adel                 | 3359`       | ✅ Required |
+| `{{INSTANCE_START_DATE}}` | Start date of enrolled session | `15 July 2026`        | Optional    |
+| `{{INSTANCE_END_DATE}}`   | End date of enrolled session   | `17 July 2026`        | Optional    |
+| `{{REJECTION_REASON}}`    | Explanation for rejection      | `Session is full`     | Optional    |
+| `{{REJECTED_BY}}`         | Name of rejecting admin        | `HSE Manager`         | Optional    |
 
 ---
 
@@ -175,12 +178,11 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                | Description       | Example                | Required?   |
-| -------------------- | ----------------- | ---------------------- | ----------- |
-| `{{USER_NAME}}`      | Name of nominee   | `Ahmed Al-Rashidi`     | ✅ Required |
-| `{{COURSE_NAME}}`    | Course name       | `Confined Space Entry` | ✅ Required |
-| `{{NOMINATOR_NAME}}` | Name of nominator | `Sara Al-Jaber`        | Optional    |
-| `{{EXPIRY_DATE}}`    | Expiry date       | `20 August 2026`       | Optional    |
+| Token                | Description           | Example                | Required?   |
+| -------------------- | --------------------- | ---------------------- | ----------- |
+| `{{USER_NAME}}`      | Name of nominee & KDC | `Ahmed Al-Rashidi`     | ✅ Required |
+| `{{COURSE_NAME}}`    | Course name           | `Confined Space Entry` | ✅ Required |
+| `{{NOMINATOR_NAME}}` | Name of nominator     | `Sara Al-Jaber`        | Optional    |
 
 ---
 
@@ -194,16 +196,17 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 👥 Recipient Resolution
 
-- **Learner (`To`)**: User added to waitlist.
+- **ADDER WAITLIST (`To`)**: Person who is adding to the waitlist.
 - **Static TO & CC**: Configured static recipients.
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                   | Description           | Example                | Required?   |
-| ----------------------- | --------------------- | ---------------------- | ----------- |
-| `{{USER_NAME}}`         | Learner name          | `Ahmed Al-Rashidi`     | ✅ Required |
-| `{{COURSE_NAME}}`       | Course name           | `Confined Space Entry` | ✅ Required |
-| `{{WAITLIST_POSITION}}` | Queue position number | `3`                    | Optional    |
+| Token                     | Description                    | Example                | Required?   |
+| ------------------------- | ------------------------------ | ---------------------- | ----------- |
+| `{{ADDER_NAME}}`          | ADDER name                     | `Ahmed Al-Rashidi`     | ✅ Required |
+| `{{COURSE_NAME}}`         | Course name                    | `Confined Space Entry` | ✅ Required |
+| `{{INSTANCE_START_DATE}}` | Start date of enrolled session | `15 July 2026`         | Optional    |
+| `{{INSTANCE_END_DATE}}`   | End date of enrolled session   | `17 July 2026`         | Optional    |
 
 ---
 
@@ -216,16 +219,17 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 #### 👥 Recipient Resolution
 
 - **Learner (`To`)**: Promoted employee enrolled in the session.
+- **Added (`To`)**: Person who added the employee to the waitlist.
 
 #### 🏷️ Available Placeholder Tokens
 
 | Token                     | Description                    | Example                | Required?   |
 | ------------------------- | ------------------------------ | ---------------------- | ----------- |
-| `{{USER_NAME}}`           | Learner name                   | `Ahmed Al-Rashidi`     | ✅ Required |
+| `{{USER_NAME}}`           | Learner name & KDC number      | `Ahmed Al-Rashidi`     | ✅ Required |
+| `{{ADDER_NAME}}`          | Adder name & KDC number        | `Ahmed Al-Rashidi`     | ✅ Required |
 | `{{COURSE_NAME}}`         | Course name                    | `Confined Space Entry` | ✅ Required |
 | `{{INSTANCE_START_DATE}}` | Start date of enrolled session | `10 August 2026`       | Optional    |
 | `{{INSTANCE_END_DATE}}`   | End date of enrolled session   | `12 August 2026`       | Optional    |
-| `{{INSTRUCTOR_NAME}}`     | Instructor name                | `Mohammed Al-Farsi`    | Optional    |
 
 ---
 
@@ -244,12 +248,12 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                     | Description              | Example                | Required?   |
-| ------------------------- | ------------------------ | ---------------------- | ----------- |
-| `{{COURSE_NAME}}`         | Name of scheduled course | `H2S Safety Awareness` | ✅ Required |
-| `{{INSTANCE_START_DATE}}` | Session start date       | `01 July 2026`         | ✅ Required |
-| `{{INSTANCE_END_DATE}}`   | Session end date         | `01 July 2026`         | Optional    |
-| `{{INSTRUCTOR_NAME}}`     | Instructor name          | `Mohammed Al-Farsi`    | Optional    |
+| Token                     | Description                                                           | Example                | Required?   |
+| ------------------------- | --------------------------------------------------------------------- | ---------------------- | ----------- |
+| `{{COURSE_NAME}}`         | Name of scheduled course                                              | `H2S Safety Awareness` | ✅ Required |
+| `{{INSTANCE_START_DATE}}` | Session start date                                                    | `01 July 2026`         | ✅ Required |
+| `{{INSTANCE_END_DATE}}`   | Session end date                                                      | `01 July 2026`         | Optional    |
+| `{{RIG_NUMBERS}}`         | rig numbers for which the course was targetted(visibility set to rig) | `Mohammed Al-Farsi`    | Optional    |
 
 ---
 
@@ -261,15 +265,15 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 
 #### 👥 Recipient Resolution
 
-- **Enrolled Learners & Rig Staff**: Affected learners and rig personnel.
+- **Rig Staff**: rig staff assigned to target rig(s) - email id entered against the rig under rig management page.
 
 #### 🏷️ Available Placeholder Tokens
 
-| Token                     | Description             | Example                  | Required?   |
-| ------------------------- | ----------------------- | ------------------------ | ----------- |
-| `{{COURSE_NAME}}`         | Course name             | `H2S Safety Awareness`   | ✅ Required |
-| `{{INSTANCE_DATE}}`       | Cancelled session date  | `01 July 2026`           | ✅ Required |
-| `{{CANCELLATION_REASON}}` | Reason for cancellation | `Instructor unavailable` | Optional    |
+| Token               | Description                                                           | Example                | Required?   |
+| ------------------- | --------------------------------------------------------------------- | ---------------------- | ----------- |
+| `{{COURSE_NAME}}`   | Course name                                                           | `H2S Safety Awareness` | ✅ Required |
+| `{{INSTANCE_DATE}}` | Cancelled session date                                                | `01 July 2026`         | ✅ Required |
+| `{{RIG_NUMBERS}}`   | rig numbers for which the course was targetted(visibility set to rig) | `Mohammed Al-Farsi`    | Optional    |
 
 ---
 
@@ -285,6 +289,7 @@ Whenever a notification is triggered, the system resolves recipients through a 4
 #### 👥 Recipient Resolution
 
 - **Enrolled Learners**: Learners enrolled in the upcoming session starting within the target window.
+- **Rig Staff**: rig staff assigned to target rig(s) - email id entered against the rig under rig management page.
 
 #### 🏷️ Available Placeholder Tokens
 
